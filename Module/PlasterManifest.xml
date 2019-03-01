@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest schemaVersion="1.1" templateType="Project" 
+  xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>CustomModulePlasterTemplate</name>
+    <id>02755a33-cae6-4cbd-8f3c-c34d385a7a96</id>
+    <version>0.1</version>
+    <title>Rich Carpenter Plaster Template</title>
+    <description></description>
+    <author>Rich Carpenter</author>
+    <tags></tags>
+  </metadata>
+  <parameters>
+    <parameter name="ModuleName" type="text" prompt="Name of your Module" />
+    <parameter name="ModuleDesc" type="text" prompt="Brief Decription of this module" />
+    <parameter name="ModuleVersion" type="text" prompt="Version number"  default='0.0.0.1' />
+    <parameter name="ModuleAuthor" type="user-fullname" prompt="Author" />
+    <parameter name="Pester" type="choice" prompt="Include Pester Tests?" default="0">
+      <choice label="&amp;Yes" help="Adds a Pester Test Folder" value="Yes" />
+      <choice label="&amp;No" help="Does not add Pester Test Folder" value="No" />
+    </parameter>
+  </parameters>
+  <content>
+    <newModuleManifest destination='${PLASTER_PARAM_ModuleName}.psd1' moduleVersion='$PLASTER_PARAM_ModuleVersion' rootModule='${PLASTER_PARAM_ModuleName}.psm1' author='$PLASTER_PARAM_ModuleAuthor' description='$PLASTER_PARAM_ModuleDesc' />
+    <file source='template.psm1' destination='${PLASTER_PARAM_ModuleName}.psm1' />
+      <message condition='$PLASTER_PARAM_Pester -eq "Yes"'>Creating a Pester Tests Folder</message>
+      <file condition='$PLASTER_PARAM_Pester -eq "Yes"' destination='Tests\' source='' />
+      <file condition='$PLASTER_PARAM_Pester -eq "Yes"' destination='Tests\${PLASTER_PARAM_ModuleName}.tests.ps1' source='basicTests.ps1' />
+    </content>
+  </plasterManifest>
