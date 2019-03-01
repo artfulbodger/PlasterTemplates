@@ -13,7 +13,7 @@
   <parameters>
     <parameter name="ModuleName" type="text" prompt="Name of your Module" />
     <parameter name="ModuleDesc" type="text" prompt="Brief Decription of this module" />
-    <parameter name="ModuleVersion" type="text" prompt="Version number"  default='0.0.0.1' />
+    <parameter name="ModuleVersion" type="text" prompt="Version number" default='0.0.0.1' />
     <parameter name="ModuleAuthor" type="user-fullname" prompt="Author" />
     <parameter name="Pester" type="choice" prompt="Include Pester Tests?" default="0">
       <choice label="&amp;Yes" help="Adds a Pester Test Folder" value="Yes" />
@@ -22,9 +22,14 @@
   </parameters>
   <content>
     <newModuleManifest destination='${PLASTER_PARAM_ModuleName}.psd1' moduleVersion='$PLASTER_PARAM_ModuleVersion' rootModule='${PLASTER_PARAM_ModuleName}.psm1' author='$PLASTER_PARAM_ModuleAuthor' description='$PLASTER_PARAM_ModuleDesc' />
-    <file source='template.psm1' destination='${PLASTER_PARAM_ModuleName}.psm1' />
-      <message condition='$PLASTER_PARAM_Pester -eq "Yes"'>Creating a Pester Tests Folder</message>
-      <file condition='$PLASTER_PARAM_Pester -eq "Yes"' destination='Tests\' source='' />
-      <file condition='$PLASTER_PARAM_Pester -eq "Yes"' destination='Tests\${PLASTER_PARAM_ModuleName}.tests.ps1' source='basicTests.ps1' />
-    </content>
-  </plasterManifest>
+    <file source='Module.psm1' destination='${PLASTER_PARAM_ModuleName}.psm1' />
+    <message condition='$PLASTER_PARAM_Pester -eq "Yes"'>Creating a Pester Tests Folder</message>
+    <file condition='$PLASTER_PARAM_Pester -eq "Yes"' destination='Tests\' source='' />
+    <file condition='$PLASTER_PARAM_Pester -eq "Yes"' destination='Tests\${PLASTER_PARAM_ModuleName}.tests.ps1' source='test\basicTests.ps1' />
+    <message>Creating Docs Folder</message>
+    <file condition='$PLASTER_PARAM_Pester -eq "Yes"' destination='docs\' source='' />
+    <file source='editor\VSCode\tasks.json' destination='.vscode\tasks.json' />
+    <file source='editor\VSCode\settings.json' destination='.vscode\settings.json' />
+    <file source='.gitignore' destination='.gitignore' />
+  </content>
+</plasterManifest>
