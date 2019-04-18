@@ -15,21 +15,43 @@
     <parameter name="ModuleDesc" type="text" prompt="Brief Decription of this module" />
     <parameter name="ModuleVersion" type="text" prompt="Version number" default='0.0.0.1' />
     <parameter name="ModuleAuthor" type="user-fullname" prompt="Author" />
+    <parameter name="FunctionFolders" type="multichoice" prompt="Include module folder structure" default="0,1">
+      <choice label='&amp;Public' value='Public' help='Adds a public folder to module root'/>
+      <choice label='&amp;Internal' value='Internal' help='Adds a internal folder to module root'/>
+      <choice label='&amp;Classes' value='Classes' help='Adds a classes folder to module root'/>
+      <choice label='&amp;Binaries' value='Binaries' help='Adds a binaries folder to module root'/>
+      <choice label='&amp;DSCResources' value='DSCResources' help='Adds a DSCResource folder to module root'/>
+    </parameter>
     <parameter name="Pester" type="choice" prompt="Include Pester Tests?" default="0">
       <choice label="&amp;Yes" help="Adds a Pester Test Folder" value="Yes" />
       <choice label="&amp;No" help="Does not add Pester Test Folder" value="No" />
+    </parameter>
+    <parameter name='Git' type = 'choice' prompt='Include Git Support?' default='0'>
+      <choice label='&amp;Yes' value='Yes' help='Includes Git files'/>
+      <choice label='&amp;No' value='No' help='Does not include git files'/>
     </parameter>
   </parameters>
   <content>
     <newModuleManifest destination='${PLASTER_PARAM_ModuleName}.psd1' moduleVersion='$PLASTER_PARAM_ModuleVersion' rootModule='${PLASTER_PARAM_ModuleName}.psm1' author='$PLASTER_PARAM_ModuleAuthor' description='$PLASTER_PARAM_ModuleDesc' />
     <file source='Module.psm1' destination='${PLASTER_PARAM_ModuleName}.psm1' />
-    <message condition='$PLASTER_PARAM_Pester -eq "Yes"'>Creating a Pester Tests Folder</message>
+    <message condition='$PLASTER_PARAM_Pester -eq "Yes"'>Setting up support for Pester</message>
+    <requireModule name="Pester" minimumVersion="3.4.0" condition='$PLASTER_PARAM_Pester -eq "Yes"'/>
     <file condition='$PLASTER_PARAM_Pester -eq "Yes"' destination='Tests\' source='' />
     <file condition='$PLASTER_PARAM_Pester -eq "Yes"' destination='Tests\${PLASTER_PARAM_ModuleName}.tests.ps1' source='test\basicTests.ps1' />
+    <message>Creating Function Folders</message>
+    <file source='' destination='Public\' condition='$PLASTER_PARAM_FunctionFolders -contains "Public"'/>
+    <file source='' destination='Internal\' condition='$PLASTER_PARAM_FunctionFolders -contains "Internal"'/>
+    <file source='' destination='Classes\' condition='$PLASTER_PARAM_FunctionFolders -contains "Classes"'/>
+    <file source='' destination='Binaries\' condition='$PLASTER_PARAM_FunctionFolders -contains "Binaries"'/>
+    <file source='' destination='DSCResources\' condition='$PLASTER_PARAM_FunctionFolders -contains "DSCResources"'/>
     <message>Creating Docs Folder</message>
-    <file condition='$PLASTER_PARAM_Pester -eq "Yes"' destination='docs\' source='' />
+    <file source='' destination='docs\' />
+    <templateFile source='README.aps1' destination='docs\index.md'/>
+    <message>Setting VSCODE as Editor</message>
     <file source='editor\VSCode\tasks.json' destination='.vscode\tasks.json' />
     <file source='editor\VSCode\settings.json' destination='.vscode\settings.json' />
-    <file source='.gitignore' destination='.gitignore' />
+    <message condition='$PlASTER_PARAM_Git -eq "Yes"'>Setting up support for Git</message>
+    <file condition='$PlASTER_PARAM_Git -eq "Yes"' source='.gitignore' destination='.gitignore' />
+    <templateFile condition='$PlASTER_PARAM_Git -eq "Yes"' source='README.aps1' destination='README.md'/>
   </content>
 </plasterManifest>
