@@ -51,7 +51,9 @@
     <file source='editor\VSCode\tasks.json' destination='.vscode\tasks.json' />
     <file source='editor\VSCode\settings.json' destination='.vscode\settings.json' />
     <message condition='$PlASTER_PARAM_Git -eq "Yes"'>Setting up support for Git</message>
-    <file condition='$PlASTER_PARAM_Git -eq "Yes"' source='.gitignore' destination='.gitignore' />
+    <file condition='$PlASTER_PARAM_Git -eq "Yes"' source='github\.gitignore' destination='.gitignore' />
     <templateFile condition='$PlASTER_PARAM_Git -eq "Yes"' source='README.aps1' destination='README.md'/>
+    <templateFile condition='$PlASTER_PARAM_Git -eq "Yes"' source='github\bug_report.amd' destination='.github\ISSUE_TEMPLATE\bug_report.md'/>
+    <templateFile condition='$PlASTER_PARAM_Git -eq "Yes"' source='github\feature_request.amd' destination='.github\ISSUE_TEMPLATE\feature_request.md'/>
   </content>
 </plasterManifest>
