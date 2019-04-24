@@ -4,6 +4,11 @@ Plaster is a template-based file and project generator written in PowerShell. It
 
 A repository for my Plaster Templates, feel free to share :)
 
+# Status
+
+[![Issues Open](https://img.shields.io/github/issues/artfulbodger/PlasterTemplates.svg)](https://github.com/artfulbodger/PlasterTemplates/issues)
+[![Release](https://img.shields.io/github/release/artfulbodger/PlasterTemplates.svg)](https://github.com/artfulbodger/PlasterTemplates/releases)
+
 # Documentation
 
 The documentation for these Plaster Templates can be found on my [github page](https://artfulbodger.github.io/PlasterTemplates/)
