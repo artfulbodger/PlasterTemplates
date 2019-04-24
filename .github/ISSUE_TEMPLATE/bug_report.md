@@ -3,6 +3,7 @@ name: Bug report
 about: Create a report to help us improve existing features or report a bug with the current code
 labels: 'bug'
 assignees: artfulbodger
+projects: PlasterTemplates
 ---
 
 **Describe the bug**
