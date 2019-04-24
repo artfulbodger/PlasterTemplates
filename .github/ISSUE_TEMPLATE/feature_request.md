@@ -3,7 +3,7 @@ name: Feature request
 about: Suggest an idea for a new feature.
 labels: enhancement
 assignees: artfulbodger
-projects: PlasterTemplates
+projects: artfulbodger/PlasterTemplates
 ---
 
 Before opening:
