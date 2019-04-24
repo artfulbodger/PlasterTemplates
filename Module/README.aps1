@@ -2,8 +2,20 @@
 "# $PLASTER_PARAM_ModuleName"
 "$PLASTER_PARAM_ModuleDesc"
 %>
+
 # Status
 <%
 "[![Issues Open](https://img.shields.io/github/issues/$PLASTER_PARAM_GitHubUser/$PLASTER_PARAM_ModuleName.svg)](https://github.com/$PLASTER_PARAM_GitHubUser/$PLASTER_PARAM_ModuleName/issues)"
 "[![Release](https://img.shields.io/github/release/$PLASTER_PARAM_GitHubUser/$PLASTER_PARAM_ModuleName.svg)](https://github.com/$PLASTER_PARAM_GitHubUser/$PLASTER_PARAM_ModuleName/releases)"
+%>
+<%
+    If ($PlASTER_PARAM_GitPages -eq 'Yes')
+    {
+@"
+
+# Documentation
+
+The documentation for this module can be found on this [github page](https://$PLASTER_PARAM_GitHubUser.github.io/$PLASTER_PARAM_ModuleName/)
+"@
+    }
 %>

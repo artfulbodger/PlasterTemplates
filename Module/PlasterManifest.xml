@@ -30,6 +30,10 @@
       <choice label='&amp;Yes' value='Yes' help='Includes Git files'/>
       <choice label='&amp;No' value='No' help='Does not include git files'/>
     </parameter>
+    <parameter name='GitPages' type = 'choice' prompt='Include GitHub Pages Support?' default='0' condition='$PlASTER_PARAM_Git -eq "Yes"'>
+      <choice label='&amp;Yes' value='Yes' help='Includes /docs folder'/>
+      <choice label='&amp;No' value='No' help='Does not include /docs folder'/>
+    </parameter>
     <parameter name="GitHubUser" type="text" prompt="GitHub User Name" condition='$PlASTER_PARAM_Git -eq "Yes"' />
   </parameters>
   <content>
@@ -45,9 +49,9 @@
     <file source='' destination='Classes\' condition='$PLASTER_PARAM_FunctionFolders -contains "Classes"'/>
     <file source='' destination='Binaries\' condition='$PLASTER_PARAM_FunctionFolders -contains "Binaries"'/>
     <file source='' destination='DSCResources\' condition='$PLASTER_PARAM_FunctionFolders -contains "DSCResources"'/>
-    <message>Creating Docs Folder</message>
-    <file source='' destination='docs\' />
-    <templateFile source='README.aps1' destination='docs\index.md'/>
+    <message condition='$PlASTER_PARAM_GitPages -eq "Yes"'>Creating Docs Folder</message>
+    <file source='' destination='docs\' condition='$PlASTER_PARAM_GitPages -eq "Yes"'/>
+    <templateFile source='README.aps1' destination='docs\index.md' condition='$PlASTER_PARAM_GitPages -eq "Yes"'/>
     <message>Setting VSCODE as Editor</message>
     <file source='editor\VSCode\tasks.json' destination='.vscode\tasks.json' />
     <file source='editor\VSCode\settings.json' destination='.vscode\settings.json' />
