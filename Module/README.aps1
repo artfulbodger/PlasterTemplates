@@ -3,3 +3,6 @@
 "$PLASTER_PARAM_ModuleDesc"
 %>
 # Status
+<%
+"[![Issues Open](https://img.shields.io/github/issues/$PLASTER_PARAM_GitHubUser/$PLASTER_PARAM_ModuleName.svg)](https://github.com/$PLASTER_PARAM_GitHubUser/$PLASTER_PARAM_ModuleName/issues)"
+%>

@@ -30,6 +30,7 @@
       <choice label='&amp;Yes' value='Yes' help='Includes Git files'/>
       <choice label='&amp;No' value='No' help='Does not include git files'/>
     </parameter>
+    <parameter name="GitHubUser" type="text" prompt="GitHub User Name" condition='$PlASTER_PARAM_Git -eq "Yes"' />
   </parameters>
   <content>
     <newModuleManifest destination='${PLASTER_PARAM_ModuleName}.psd1' moduleVersion='$PLASTER_PARAM_ModuleVersion' rootModule='${PLASTER_PARAM_ModuleName}.psm1' author='$PLASTER_PARAM_ModuleAuthor' description='$PLASTER_PARAM_ModuleDesc' />
