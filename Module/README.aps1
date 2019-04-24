@@ -6,7 +6,7 @@
 # Status
 <%
 "[![Issues Open](https://img.shields.io/github/issues/$PLASTER_PARAM_GitHubUser/$PLASTER_PARAM_ModuleName.svg)](https://github.com/$PLASTER_PARAM_GitHubUser/$PLASTER_PARAM_ModuleName/issues)"
-"[![Release](https://img.shields.io/github/release/$PLASTER_PARAM_GitHubUser/$PLASTER_PARAM_ModuleName.svg)](https://github.com/$PLASTER_PARAM_GitHubUser/$PLASTER_PARAM_ModuleName/releases)"
+"[![Open Bugs](https://img.shields.io/github/issues-raw/$PLASTER_PARAM_GitHubUser/$PLASTER_PARAM_ModuleName/bug.svg?color=red&label=open%20bugs)](https://github.com/$PLASTER_PARAM_GitHubUser/$PLASTER_PARAM_ModuleName/issues?q=is%3Aopen+is%3Aissue+label%3Abug)"
 %>
 <%
     If ($PlASTER_PARAM_GitPages -eq 'Yes')
