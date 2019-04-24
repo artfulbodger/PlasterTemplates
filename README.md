@@ -7,7 +7,6 @@ A repository for my Plaster Templates, feel free to share :)
 # Status
 
 [![Issues Open](https://img.shields.io/github/issues/artfulbodger/PlasterTemplates.svg)](https://github.com/artfulbodger/PlasterTemplates/issues)
-[![Release](https://img.shields.io/github/release/artfulbodger/PlasterTemplates.svg)](https://github.com/artfulbodger/PlasterTemplates/releases)
 
 # Documentation
 
