@@ -1,10 +1,6 @@
-<<<<<<< Updated upstream
-$moduleRoot = Resolve-Path "$PSScriptRoot\.."
-=======
 Write-Host "$PSScriptRoot"
 $projectRoot = Resolve-Path "$PSScriptRoot\.."
 $moduleRoot = Split-Path (Resolve-Path "$projectRoot\*\*.psm1")
->>>>>>> Stashed changes
 $moduleName = Split-Path $moduleRoot -Leaf
 
 Describe "General project validation: $moduleName" {
@@ -23,8 +19,6 @@ Describe "General project validation: $moduleName" {
         $null = [System.Management.Automation.PSParser]::Tokenize($contents, [ref]$errors)
         $errors.Count | Should Be 0
     }
-<<<<<<< Updated upstream
-=======
 
     It "Module '$moduleName' can import cleanly" {
         {Import-Module (Join-Path $moduleRoot "$moduleName.psm1") -force } | Should Not Throw
@@ -80,5 +74,4 @@ foreach ($Manifest in $ManifestPath) {
         }
     }
 
->>>>>>> Stashed changes
 }
