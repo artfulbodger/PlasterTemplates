@@ -37,18 +37,18 @@
     <parameter name="GitHubUser" type="text" prompt="GitHub User Name" condition='$PlASTER_PARAM_Git -eq "Yes"' />
   </parameters>
   <content>
-    <newModuleManifest destination='${PLASTER_PARAM_ModuleName}.psd1' moduleVersion='$PLASTER_PARAM_ModuleVersion' rootModule='${PLASTER_PARAM_ModuleName}.psm1' author='$PLASTER_PARAM_ModuleAuthor' description='$PLASTER_PARAM_ModuleDesc' />
-    <file source='Module.psm1' destination='${PLASTER_PARAM_ModuleName}.psm1' />
+    <newModuleManifest destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psd1' moduleVersion='$PLASTER_PARAM_ModuleVersion' rootModule='${PLASTER_PARAM_ModuleName}.psm1' author='$PLASTER_PARAM_ModuleAuthor' description='$PLASTER_PARAM_ModuleDesc' />
+    <file source='Module.psm1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1' />
     <message condition='$PLASTER_PARAM_Pester -eq "Yes"'>Setting up support for Pester</message>
     <requireModule name="Pester" minimumVersion="3.4.0" condition='$PLASTER_PARAM_Pester -eq "Yes"'/>
     <file condition='$PLASTER_PARAM_Pester -eq "Yes"' destination='Tests\' source='' />
     <file condition='$PLASTER_PARAM_Pester -eq "Yes"' destination='Tests\${PLASTER_PARAM_ModuleName}.tests.ps1' source='test\basicTests.ps1' />
     <message>Creating Function Folders</message>
-    <file source='' destination='Public\' condition='$PLASTER_PARAM_FunctionFolders -contains "Public"'/>
-    <file source='' destination='Internal\' condition='$PLASTER_PARAM_FunctionFolders -contains "Internal"'/>
-    <file source='' destination='Classes\' condition='$PLASTER_PARAM_FunctionFolders -contains "Classes"'/>
-    <file source='' destination='Binaries\' condition='$PLASTER_PARAM_FunctionFolders -contains "Binaries"'/>
-    <file source='' destination='DSCResources\' condition='$PLASTER_PARAM_FunctionFolders -contains "DSCResources"'/>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\Public\' condition='$PLASTER_PARAM_FunctionFolders -contains "Public"'/>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\Internal\' condition='$PLASTER_PARAM_FunctionFolders -contains "Internal"'/>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\Classes\' condition='$PLASTER_PARAM_FunctionFolders -contains "Classes"'/>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\Binaries\' condition='$PLASTER_PARAM_FunctionFolders -contains "Binaries"'/>
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\DSCResources\' condition='$PLASTER_PARAM_FunctionFolders -contains "DSCResources"'/>
     <message condition='$PlASTER_PARAM_GitPages -eq "Yes"'>Creating Docs Folder</message>
     <file source='' destination='docs\' condition='$PlASTER_PARAM_GitPages -eq "Yes"'/>
     <templateFile source='README.aps1' destination='docs\index.md' condition='$PlASTER_PARAM_GitPages -eq "Yes"'/>
