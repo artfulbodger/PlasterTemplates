@@ -38,7 +38,7 @@
       [CmdletBinding()]
 '@
     }
-    else 
+    else
     {
 @'
       [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]
