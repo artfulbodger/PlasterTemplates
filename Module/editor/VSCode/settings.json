@@ -16,5 +16,9 @@
     // When enabled the formatting engine is invoked during typing
     "editor.formatOnType": true,
     // When enabled the formatting engine is invoked when files are saved
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    // When enabled the formatting engine is invoked when code is pasted
+    "editor.formatOnPaste": true,
+    // Sets default language for VSCode to Powershell
+    "files.defaultLanguage": "powershell"
 }
