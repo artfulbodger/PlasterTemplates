@@ -3,9 +3,8 @@
 %>
 {
 <%
-    If ($PLASTER_PARAM_Help -eq 'Yes')
-    {
-        @"
+    If ($PLASTER_PARAM_Help -eq 'Yes') {
+@"
   <#
     .SYNOPSIS
       Describe purpose of $PLASTER_PARAM_FunctionName in 1-2 sentences.
@@ -31,23 +30,20 @@
     }
 %>
 <%
-    if ($PLASTER_PARAM_CmdletBinding -eq 'Simple')
-    {
+    if ($PLASTER_PARAM_CmdletBinding -eq 'Simple') {
 @'
 
       [CmdletBinding()]
 '@
-    }
-    else
-    {
+    } else {
 @'
-      [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]
+      [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='Medium')]
 '@
     }
 %>
     Param
     (
-        [Parameter(Mandatory,HelpMessage='Add help message for user')][string]$Param1
+        [Parameter(Mandatory)][string]$Param1
     )
 
     Begin
@@ -55,6 +51,17 @@
     }
     Process
     {
+<%
+        if ($PLASTER_PARAM_CmdletBinding -eq 'Advanced') {
+@'
+        if ($PSCmdlet.ShouldProcess("Target", "Operation")) {
+
+        } else{
+
+        }
+'@
+        }
+%>
     }
     End
     {
