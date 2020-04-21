@@ -1,4 +1,24 @@
 {
     // When enabled, will trim trailing whitespace when you save a file.
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    // Force integrated terminal to use PowerShell 7
+    "terminal.integrated.automationShell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    // When enabled PSScriptAnalyzer will offer markup suggestions
+    "powershell.scriptAnalysis.enable": true,
+    // When enabled the inetegrated terminal will launch at startup
+    "powershell.startAutomatically": true,
+    // When enabled the Focus is shifted to the integrated console
+    "powershell.integratedConsole.focusConsoleOnExecute": false,
+    // WHen enabled P$ profile is loaded
+    "powershell.enableProfileLoading": true,
+    // When enbaled openbraces are formatted onto the same line
+    "powershell.codeFormatting.openBraceOnSameLine": true,
+    // When enabled the formatting engine is invoked during typing
+    "editor.formatOnType": true,
+    // When enabled the formatting engine is invoked when files are saved
+    "editor.formatOnSave": true,
+    // When enabled the formatting engine is invoked when code is pasted
+    "editor.formatOnPaste": true,
+    // Sets default language for VSCode to Powershell
+    "files.defaultLanguage": "powershell"
 }
