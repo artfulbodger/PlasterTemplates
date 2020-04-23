@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<plasterManifest schemaVersion="1.1" templateType="Project" 
+<plasterManifest schemaVersion="1.1" templateType="Project"
   xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
   <metadata>
     <name>CustomModulePlasterTemplate</name>
     <id>02755a33-cae6-4cbd-8f3c-c34d385a7a96</id>
-    <version>1.0</version>
+    <version>2.0</version>
     <title>Rich Carpenter Plaster Template</title>
     <description></description>
     <author>Rich Carpenter</author>
@@ -35,6 +35,10 @@
       <choice label='&amp;No' value='No' help='Does not include /docs folder'/>
     </parameter>
     <parameter name="GitHubUser" type="text" prompt="GitHub User Name" condition='$PlASTER_PARAM_Git -eq "Yes"' />
+    <parameter name="GitLicense" type="choice" prompt="Include GitHub MIT License?" condition='$PlASTER_PARAM_Git -eq "Yes"' default="0">
+      <choice label="&amp;Yes" help="Adds the MIT License to the Git repo" value="Yes" />
+      <choice label="&amp;No" help="Does not add the MIT License to the Git repo" value="No" />
+    </parameter>
   </parameters>
   <content>
     <newModuleManifest destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psd1' moduleVersion='$PLASTER_PARAM_ModuleVersion' rootModule='${PLASTER_PARAM_ModuleName}.psm1' author='$PLASTER_PARAM_ModuleAuthor' description='$PLASTER_PARAM_ModuleDesc' />
@@ -60,5 +64,6 @@
     <templateFile condition='$PlASTER_PARAM_Git -eq "Yes"' source='README.aps1' destination='README.md'/>
     <templateFile condition='$PlASTER_PARAM_Git -eq "Yes"' source='github\bug_report.amd' destination='.github\ISSUE_TEMPLATE\bug_report.md'/>
     <templateFile condition='$PlASTER_PARAM_Git -eq "Yes"' source='github\feature_request.amd' destination='.github\ISSUE_TEMPLATE\feature_request.md'/>
+    <templateFile condition='$PlASTER_PARAM_GitLicense -eq "Yes"' source='github\LICENSE.amd' destination='LICENSE.md' />
   </content>
 </plasterManifest>
