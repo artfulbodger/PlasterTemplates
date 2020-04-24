@@ -56,6 +56,7 @@
     <message condition='$PlASTER_PARAM_GitPages -eq "Yes"'>Creating Docs Folder</message>
     <file source='' destination='docs\' condition='$PlASTER_PARAM_GitPages -eq "Yes"'/>
     <templateFile source='README.aps1' destination='docs\index.md' condition='$PlASTER_PARAM_GitPages -eq "Yes"'/>
+    <templateFile condition='$PlASTER_PARAM_GitPages -eq "Yes"' source='github\_config.ayml' destination='docs\_config.yml'/>
     <message>Setting VSCODE as Editor</message>
     <file source='editor\VSCode\tasks.json' destination='.vscode\tasks.json' />
     <file source='editor\VSCode\settings.json' destination='.vscode\settings.json' />

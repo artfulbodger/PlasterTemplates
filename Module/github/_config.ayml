@@ -1,0 +1,6 @@
+theme: jekyll-theme-minimal
+<%
+"title: $PLASTER_PARAM_ModuleName"
+"description: $PLASTER_PARAM_ModuleDesc"
+%>
+show_downloads: true
